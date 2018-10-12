@@ -1,0 +1,29 @@
+version: '2.3'
+
+volumes:
+  postgres-data:
+    driver: local
+  bundle-data:
+    driver: local
+
+services:
+  postgres-db:
+    image: postgres:10
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    environment:
+      DB_HOST: postgres-db
+      PORT: '9292'
+    command: bin/rails server -b 0.0.0.0 -P /tmp/server.pid
+    volumes:
+      - .:/app
+      - bundle-data:/usr/local/bundle
+    ports:
+      - "9292:9292"
+    depends_on:
+      - postgres-db
+    stdin_open: true
+    tty: true
