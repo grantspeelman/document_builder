@@ -1,0 +1,10 @@
+h1 Home
+
+.row
+  .col-sm-12
+    p
+      - if current_account
+        | Welcome
+      - else
+        a href=new_account_session_path
+          | Please login
