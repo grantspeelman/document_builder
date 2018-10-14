@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :accounts
 
-  resources :document_templates
+  resources :document_templates do
+    scope module: :document_templates do
+      resources :linked_elements, only: [:new]
+    end
+  end
 end

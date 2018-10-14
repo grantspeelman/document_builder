@@ -7,5 +7,6 @@ h1 View Document Template
       = @document_template.title
 
     .btn-group
+      a.btn.btn-link href=new_document_template_linked_element_path(@document_template) Add Element
       a.btn.btn-link href=edit_document_template_path(@document_template) Edit
       a.btn.btn-link href=document_templates_path Back
