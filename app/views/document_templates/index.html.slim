@@ -1,0 +1,30 @@
+h1 Listing Document Templates
+
+.row
+  .col-sm-12
+    table
+      thead
+        tr
+          th Title
+          th
+
+      tbody
+        - @document_templates.each do |document_template|
+          tr
+            td = document_template.title
+            td
+              .btn-group
+                a.btn.btn-link href=document_template_path(document_template)
+                  | Show
+                a.btn.btn-link href=edit_document_template_path(document_template)
+                  | Edit
+                a.btn.btn-link[href=document_template_path(document_template)
+                                  data-method='delete'
+                                  data-confirm='Are you sure?']
+                  | Destroy
+
+br
+
+.row
+  .col-sm-12
+    a.btn.btn-primary href=new_document_template_path New Document template

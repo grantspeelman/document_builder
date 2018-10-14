@@ -17,12 +17,13 @@ html
         ul class="navbar-nav mr-auto"
           li class="nav-item"
             a class="nav-link" href=root_path Home
-          - if current_account
-            li class="nav-item"
-              a class="nav-link" href=destroy_account_session_path data-method='delete' data-confirm='' Sign Out
+          li class="nav-item"
+            a class="nav-link" href=document_templates_path Document Templates
 
     main role="main" class="container"
       div class="main-wrapper"
+        .alert.alert-success = notice if notice
+        .alert.alert-warning = alert if alert
         == yield
 
     script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"

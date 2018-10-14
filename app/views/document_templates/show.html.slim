@@ -1,0 +1,11 @@
+h1 View Document Template
+
+.row
+  .col-sm-12
+    p
+      strong Title:
+      = @document_template.title
+
+    .btn-group
+      a.btn.btn-link href=edit_document_template_path(@document_template) Edit
+      a.btn.btn-link href=document_templates_path Back

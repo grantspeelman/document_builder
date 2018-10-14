@@ -29,6 +29,7 @@ module App
 
     # Don't generate system test files.
     config.generators do |generate|
+      generate.template_engine :slim
       generate.helper false
       generate.assets false
       generate.request_specs true
