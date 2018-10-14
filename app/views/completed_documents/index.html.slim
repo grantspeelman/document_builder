@@ -1,0 +1,22 @@
+h1 Listing Documents
+
+.row
+  .col-sm-12
+    table
+      thead
+        tr
+          th Title
+          th Completed on
+          th
+
+      tbody
+        - @completed_documents.each do |document|
+          tr
+            td = document.title
+            td = document.updated_at
+            td
+              .btn-group
+                a.btn.btn-link href=completed_document_path(document)
+                  | Show
+                a.btn.btn-link href=edit_completed_document_path(document)
+                  | Edit

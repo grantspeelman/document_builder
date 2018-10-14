@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :completed_documents, only: [:create, :show, :edit, :update]
+  resources :completed_documents, except: [:destroy]
 end

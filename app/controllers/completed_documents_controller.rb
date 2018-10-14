@@ -1,6 +1,10 @@
 class CompletedDocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @completed_documents = CompletedDocument.for_account(current_account)
+  end
+
   def create
     @completed_document = CompletedDocument.new_for(account: current_account, template_id: params.fetch(:template_id))
     @completed_document.save!
