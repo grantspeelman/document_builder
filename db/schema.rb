@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_115603) do
+ActiveRecord::Schema.define(version: 2018_10_14_133028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 2018_10_14_115603) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
-  create_table "document_templates", force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.bigint "account_id"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_document_templates_on_account_id"
+    t.string "type", null: false
+    t.index ["account_id"], name: "index_documents_on_account_id"
   end
 
   create_table "html_elements", force: :cascade do |t|
@@ -58,5 +59,5 @@ ActiveRecord::Schema.define(version: 2018_10_14_115603) do
     t.index ["element_type", "element_id"], name: "index_linked_elements_on_element_type_and_element_id"
   end
 
-  add_foreign_key "linked_elements", "document_templates"
+  add_foreign_key "linked_elements", "documents", column: "document_template_id"
 end

@@ -1,4 +1,4 @@
-class DocumentTemplate < ApplicationRecord
+class DocumentTemplate < Document
   belongs_to :account
   has_many :linked_elements
 
