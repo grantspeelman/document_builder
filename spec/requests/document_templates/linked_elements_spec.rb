@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'LinkedElementsController', type: :request do
+RSpec.describe DocumentTemplates::LinkedElementsController, type: :request do
   describe 'logged in' do
     let!(:account) { Account.create!(email: 'person@mail.com', password: '123123123') }
 

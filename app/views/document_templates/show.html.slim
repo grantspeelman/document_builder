@@ -3,10 +3,17 @@ h1 View Document Template
 .row
   .col-sm-12
     p
-      strong Title:
+      strong> Title:
       = @document_template.title
+      a.btn.btn-link href=edit_document_template_path(@document_template) Edit
 
+.row
+  .col-sm-12
     .btn-group
       a.btn.btn-link href=new_document_template_linked_element_path(@document_template) Add Element
-      a.btn.btn-link href=edit_document_template_path(@document_template) Edit
       a.btn.btn-link href=document_templates_path Back
+
+- @document_template.linked_elements.each do |linked_element|
+  .row.my-1
+    .col-sm-12
+      == render 'linked_element', linked_element: linked_element

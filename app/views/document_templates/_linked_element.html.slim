@@ -1,0 +1,6 @@
+.card.border.border-primary
+  .card-title
+    = linked_element.element_type
+
+  .card-body
+    == render linked_element.element_type.underscore, element: linked_element.element

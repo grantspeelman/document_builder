@@ -1,2 +1,3 @@
-class Linked_Element < ApplicationRecord
+class LinkedElement < ApplicationRecord
+  belongs_to :element, polymorphic: true
 end

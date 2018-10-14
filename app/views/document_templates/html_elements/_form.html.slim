@@ -1,0 +1,22 @@
+= form_for [document_template, html_element] do |f|
+  - if html_element.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(html_element.errors.count, "error")} prohibited this from being saved:"
+      ul
+        - html_element.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+
+  = f.submit class: 'btn btn-primary'
+
+javascript:
+  document.addEventListener("turbolinks:load", function () {
+    ClassicEditor
+      .create(document.querySelector('#html_element_content'))
+      .catch(error => {
+        console.error(error);
+      });
+  })

@@ -4,9 +4,5 @@ h1 Select Element Type
   .col-sm-12
     ul
       - @element_types.each do |element_type|
-        li: a.btn.btn-link href=url_for(element_type, action: 'new') element_type
+        li: a.btn.btn-link href=url_for([:new, @document_template, element_type]) = t(".#{element_type}")
 
-.row
-  .col-sm-12
-    .btn-group
-      a.btn.btn-link href=document_template_path(@document_template) Back

@@ -1,0 +1,8 @@
+- content_for :content
+  == yield
+  .row
+    .col-sm-12
+      .btn-group
+        a.btn.btn-link href=document_template_path(@document_template) Back
+
+== render template: 'layouts/application'
