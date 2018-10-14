@@ -3,4 +3,9 @@
     = linked_element.element_type
 
   .card-body
-    == render linked_element.element_type.underscore, element: linked_element.element
+    div
+      == render linked_element.element_type.underscore, element: linked_element.element
+    a.btn.btn-link[href=document_template_linked_element_path(document_template, linked_element)
+                   data-method="delete"
+                   data-confirm="Are you sure"]
+      | Delete

@@ -18,6 +18,18 @@ RSpec.describe DocumentTemplates::LinkedElementsController, type: :request do
           expect(response).to have_http_status(200)
         end
       end
+
+      describe "DELETE /linked_elements/:id" do
+        let!(:html_element) { HTMLElement.create!(content: '<p>Hello</p>') }
+        let!(:linked_element) { document_template.linked_elements.create!( element: html_element ) }
+
+        it "works" do
+          delete "/document_templates/#{document_template.to_param}/linked_elements/#{linked_element.to_param}"
+          expect(response).to redirect_to(document_template_path(document_template))
+          expect{ html_element.reload }.to raise_error(ActiveRecord::RecordNotFound)
+          expect{ linked_element.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+      end
     end
   end
 end

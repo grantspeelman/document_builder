@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :document_templates do
     scope module: :document_templates do
-      resources :linked_elements, only: [:new]
+      resources :linked_elements, only: [:new, :destroy]
       resources :html_elements, only: [:new, :create]
       resources :input_elements, only: [:new, :create]
     end

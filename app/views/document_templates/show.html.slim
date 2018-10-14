@@ -16,4 +16,4 @@ h1 View Document Template
 - @document_template.linked_elements.each do |linked_element|
   .row.my-1
     .col-sm-12
-      == render 'linked_element', linked_element: linked_element
+      == render 'linked_element', document_template: @document_template, linked_element: linked_element

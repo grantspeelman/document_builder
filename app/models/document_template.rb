@@ -9,4 +9,9 @@ class DocumentTemplate < ApplicationRecord
   def add_element(element)
     linked_elements.create!(element: element)
   end
+
+  # @return [LinkedElement]
+  def find_linked_element(id)
+    linked_elements.find(id)
+  end
 end
