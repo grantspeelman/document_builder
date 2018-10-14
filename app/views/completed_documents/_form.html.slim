@@ -1,0 +1,14 @@
+= form_with model: completed_document do |f|
+  - if completed_document.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(completed_document.errors.count, "error")} prohibited this from being saved:"
+      ul
+        - completed_document.errors.full_messages.each do |message|
+          li = message
+
+  = f.fields_for :linked_elements do |nested_f|
+    .row.my-1
+      .col-sm-12
+        == render 'linked_element', completed_document: completed_document, linked_element: nested_f.object, f: nested_f
+
+  = f.submit class: 'btn btn-primary'

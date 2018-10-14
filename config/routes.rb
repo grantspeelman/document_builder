@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       resources :input_elements, only: [:new, :create]
     end
   end
+
+  resources :completed_documents, only: [:create, :show, :edit, :update]
 end

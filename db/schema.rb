@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_14_133028) do
+ActiveRecord::Schema.define(version: 2018_10_14_144312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,17 +47,18 @@ ActiveRecord::Schema.define(version: 2018_10_14_133028) do
     t.string "html_type", default: "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "content", default: "", null: false
   end
 
   create_table "linked_elements", force: :cascade do |t|
-    t.bigint "document_template_id"
+    t.bigint "document_id"
     t.integer "element_id"
     t.string "element_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document_template_id"], name: "index_linked_elements_on_document_template_id"
+    t.index ["document_id"], name: "index_linked_elements_on_document_id"
     t.index ["element_type", "element_id"], name: "index_linked_elements_on_element_type_and_element_id"
   end
 
-  add_foreign_key "linked_elements", "documents", column: "document_template_id"
+  add_foreign_key "linked_elements", "documents"
 end

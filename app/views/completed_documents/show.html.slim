@@ -1,0 +1,18 @@
+h1 View Document
+
+.row
+  .col-sm-12
+    p
+      strong> Title:
+      = @completed_document.title
+      a.btn.btn-link href=edit_completed_document_path(@completed_document) Edit
+
+.row
+  .col-sm-12
+    .btn-group
+      a.btn.btn-link href=document_templates_path List Templates
+
+- @completed_document.linked_elements.each do |linked_element|
+  .row.my-1
+    .col-sm-12
+      == render 'show_linked_element', document_template: @completed_document, linked_element: linked_element

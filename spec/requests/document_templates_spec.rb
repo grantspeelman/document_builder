@@ -39,6 +39,14 @@ RSpec.describe DocumentTemplatesController, type: :request do
       end
     end
 
+    describe "GET /document_templates/:id" do
+      it "works" do
+        template = DocumentTemplate.create!(account: account, title: 'Doc')
+        get "/document_templates/#{template.to_param}"
+        expect(response).to have_http_status(200)
+      end
+    end
+
     describe "GET /document_templates/:id/edit" do
       it "works" do
         template = DocumentTemplate.create!(account: account, title: 'Doc')

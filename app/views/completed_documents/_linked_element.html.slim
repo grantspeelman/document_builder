@@ -1,0 +1,2 @@
+= f.fields_for :element do |nested_f|
+  == render linked_element.element_type.underscore, element: linked_element.element, f: nested_f

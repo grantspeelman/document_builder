@@ -11,7 +11,8 @@ h1 View Document Template
   .col-sm-12
     .btn-group
       a.btn.btn-link href=new_document_template_linked_element_path(@document_template) Add Element
-      a.btn.btn-link href=document_templates_path Back
+      a.btn.btn-link href=completed_documents_path(template_id: @document_template) data-method="post" Create Document
+      a.btn.btn-link href=document_templates_path List Templates
 
 - @document_template.linked_elements.each do |linked_element|
   .row.my-1
